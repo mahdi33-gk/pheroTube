@@ -28,14 +28,18 @@ const loadvideoDisplay = (video) => {
     const divVideo = document.createElement("div");
     divVideo.className = "card card-compact px-3 py-2";
     divVideo.innerHTML = `
-   <figure>
-     <img
+   <figure class="h-[200px]">
+     <img class="object-cover h-full w-full"
       src="${item.thumbnail}"
       alt="Shoes" />
    </figure>
   <div class="card-body">
-    <h2 class="card-title">Shoes!</h2>
-    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <h2 class="card-title">${item.title}</h2>
+    <div>
+      <div><img src="" alt=""></div>
+      <div><p>${item.authors[0].profile_name}</p>
+    <p>${item.others.views}</p></div> 
+    </div>
     <div class="card-actions justify-end">
       <button class="btn btn-primary">Buy Now</button>
     </div>
