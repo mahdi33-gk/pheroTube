@@ -26,11 +26,11 @@ const loadvideoDisplay = (video) => {
   video.forEach((item) => {
     const container = document.getElementById("videos-container");
     const divVideo = document.createElement("div");
-    divVideo.className = "card card-compact";
+    divVideo.className = "card card-compact px-3 py-2";
     divVideo.innerHTML = `
    <figure>
      <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      src="${item.thumbnail}"
       alt="Shoes" />
    </figure>
   <div class="card-body">
@@ -40,8 +40,7 @@ const loadvideoDisplay = (video) => {
       <button class="btn btn-primary">Buy Now</button>
     </div>
   </div>`;
-  container.append(divVideo);
-
+    container.append(divVideo);
   });
 };
 loadVideos();
