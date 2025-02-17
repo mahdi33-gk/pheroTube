@@ -5,6 +5,12 @@ const loadCategories = () =>{
 }
 
 const displayData = (category) => {
-    console.log(category)
+    category.forEach(item => {
+        const buttonContainer = document.getElementById('btn-container');
+        const button = document.createElement('button');
+        button.className = 'px-3 py-1 text-textCl bg-primary text-white rounded-md  bg-littleBg';
+        button.innerText = item.category;
+        buttonContainer.appendChild(button);
+    });
 }
 loadCategories()
