@@ -34,15 +34,21 @@ const loadvideoDisplay = (video) => {
       alt="Shoes" />
    </figure>
   <div class="card-body">
-    <h2 class="card-title">${item.title}</h2>
+    
+    
+    <div class="flex gap-3 ">
+    <div class="w-10 h-10"> <img class=" rounded-full object-cover w-full  h-full" src="${item.authors[0].profile_picture}" alt=""></div>
+    <div><h2 class="card-title text-[15px]">${item.title}</h2>
     <div>
-      <div><img src="" alt=""></div>
-      <div><p>${item.authors[0].profile_name}</p>
-    <p>${item.others.views}</p></div> 
+      <div></div>
+      <div><p class="text-[14px] text-textCl">${item.authors[0].profile_name}  <span>${item.authors[0]?.verified === true ? `<i class="ml-[2px] text-blue-800 fa-solid fa-circle-check"></i>` : ''}</span></p>
+    <p class="text-[14px] text-textCl mt-1">${item.others.views}</p></div> 
     </div>
-    <div class="card-actions justify-end">
-      <button class="btn btn-primary">Buy Now</button>
     </div>
+    
+    </div>
+    
+    
   </div>`;
     container.append(divVideo);
   });
