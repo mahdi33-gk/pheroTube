@@ -4,13 +4,19 @@ const loadCategories = () => {
     .then((data) => displayData(data.categories));
 };
 
+const loadCategoryVideos = (id) => {
+  alert(id);
+}
+
 const displayData = (category) => {
   category.forEach((item) => {
     const buttonContainer = document.getElementById("btn-container");
-    const button = document.createElement("button");
-    button.className = "px-3 py-1 text-textCl rounded-md font-thin bg-littleBg";
-    button.innerText = item.category;
-    buttonContainer.appendChild(button);
+    const buttonDiv = document.createElement("div");
+    buttonDiv.innerHTML = `
+    <button onclick="loadCategoryVideos(${item.category_id})" class="btn px-3 py-1 text-textCl rounded-md font-thin bg-littleBg">${item.category}</button>
+    `;
+  
+    buttonContainer.appendChild(buttonDiv);
   });
 };
 loadCategories();
@@ -32,7 +38,7 @@ const loadvideoDisplay = (video) => {
      <img class="object-cover h-full w-full"
       src="${item.thumbnail}"
       alt="Shoes" />
-      ${item.others.posted_date?.length === 0 ? ' ' : `<span class="right-2 bottom-2 text-white p-1 bg-black rounded-md absolute">${timeCounter(item.others.posted_date)}</span>`}
+      ${item.others.posted_date?.length === 0 ? ' ' : `<span class="right-2 bottom-2 text-white text-sm p-1 bg-black rounded-md absolute">${timeCounter(item.others.posted_date)}</span>`}
       
    </figure>
   <div class="card-body">
