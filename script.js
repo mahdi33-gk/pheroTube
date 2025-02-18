@@ -22,16 +22,18 @@ const loadVideos = () => {
 };
 
 const loadvideoDisplay = (video) => {
-  console.log(video);
+
   video.forEach((item) => {
     const container = document.getElementById("videos-container");
     const divVideo = document.createElement("div");
     divVideo.className = "card card-compact px-3 py-2";
     divVideo.innerHTML = `
-   <figure class="h-[200px]">
+   <figure class="h-[200px] relative">
      <img class="object-cover h-full w-full"
       src="${item.thumbnail}"
       alt="Shoes" />
+      ${item.others.posted_date?.length === 0 ? ' ' : `<span class="right-2 bottom-2 text-white p-1 bg-black rounded-md absolute">${timeCounter(item.others.posted_date)}</span>`}
+      
    </figure>
   <div class="card-body">
     
@@ -54,3 +56,13 @@ const loadvideoDisplay = (video) => {
   });
 };
 loadVideos();
+
+// timeGeneratorFunction
+function timeCounter(time){
+  let hour = parseInt(time / 3600);
+  let min = parseInt(time % 3600);
+  let sec = parseInt(min / 60);
+  return`${hour} hrs ${min} min ${sec} ago`;
+  
+}
+
