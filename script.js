@@ -96,10 +96,26 @@ const loadvideoDisplay = (video) => {
 };
 loadVideos();
 
+
+
+
 // timeGeneratorFunction
 function timeCounter(time) {
   let hour = parseInt(time / 3600);
   let min = parseInt(time % 3600);
   let sec = parseInt(min / 60);
   return `${hour} hrs ${min} min ${sec} ago`;
+}
+
+
+// videoDetails and modal
+const showMOdalWithDetails = async (videoId) =>{
+  const url = (`https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`)
+  const res =await fetch(url);
+  const data = await res.json();
+  displayDetails(video.data);
+}
+
+const displayDetails = (video) =>{
+  
 }
