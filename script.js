@@ -5,7 +5,10 @@ const loadCategories = () => {
 };
 
 const loadCategoryVideos = (id) => {
-  alert(id);
+  
+  fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
+  .then(res => res.json())
+  .then(data => loadvideoDisplay(data.category))
 }
 
 const displayData = (category) => {
@@ -28,9 +31,11 @@ const loadVideos = () => {
 };
 
 const loadvideoDisplay = (video) => {
-
+  const container = document.getElementById("videos-container");
+  container.innerHTML ="";
   video.forEach((item) => {
-    const container = document.getElementById("videos-container");
+    
+    
     const divVideo = document.createElement("div");
     divVideo.className = "card card-compact px-3 py-2";
     divVideo.innerHTML = `
