@@ -33,6 +33,11 @@ const loadVideos = () => {
 const loadvideoDisplay = (video) => {
   const container = document.getElementById("videos-container");
   container.innerHTML ="";
+
+  if(video.length == 0){
+    container.innerHTML = `<div class="flex flex-col justify-center items-center gap-y-10">
+    <h1>No content</h1> <img class="flex items-center justify-center" src="Icon.png" alt=""></div>`
+  }
   video.forEach((item) => {
     
     
