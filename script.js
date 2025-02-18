@@ -8,7 +8,12 @@ const loadCategoryVideos = (id) => {
   
   fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
   .then(res => res.json())
-  .then(data => loadvideoDisplay(data.category))
+  .then(data => {
+    const activeBtn = document.getElementById(`btn-${id}`);
+    console.log(activeBtn)
+    activeBtn.className = 'active btn '
+    loadvideoDisplay(data.category)
+  })
 }
 
 const displayData = (category) => {
@@ -16,7 +21,7 @@ const displayData = (category) => {
     const buttonContainer = document.getElementById("btn-container");
     const buttonDiv = document.createElement("div");
     buttonDiv.innerHTML = `
-    <button onclick="loadCategoryVideos(${item.category_id})" class="btn px-3 py-1 text-textCl rounded-md font-thin bg-littleBg">${item.category}</button>
+    <button id="btn-${item.category_id}" onclick="loadCategoryVideos(${item.category_id})" class="btn px-3 py-1 text-textCl rounded-md font-thin bg-littleBg">${item.category}</button>
     `;
   
     buttonContainer.appendChild(buttonDiv);
@@ -36,7 +41,7 @@ const loadvideoDisplay = (video) => {
 
   if(video.length == 0){
     container.innerHTML = `<div class="flex  max-w-full col-span-1 md:col-span-4  mx-auto flex-col justify-center items-center gap-y-10">
-    <h1>No content</h1> <img class="flex items-center justify-center" src="Icon.png" alt=""></div>`
+    <h1>No content</h1> <img class="flex h-[400px] items-center justify-center" src="Icon.png" alt=""></div>`
   }
   video.forEach((item) => {
     
